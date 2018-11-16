@@ -10,12 +10,12 @@ class BaseTest(TestCase):
             return num
 
         @test.when
-        def when_test(num):
+        def test(num):
             if num == 8:
                 return True
 
         @test.then
-        def than_test(num):
+        def test(num):
             return "Gotcha"
 
 
@@ -28,21 +28,21 @@ class BaseTest(TestCase):
             return num
 
         @test.when
-        def when_test(num):
+        def test(num):
             if num == 8:
                 return True
 
         @test.then
-        def than_test(num):
+        def test(num):
             return "Gotcha 8"
 
         @test.when
-        def when_test_(num):
+        def test(num):
             if num == 101:
                 return True
 
         @test.then
-        def than_test_(num):
+        def test(num):
             return "Gotcha 101"
 
         self.assertEqual("Gotcha 8", test(8))
@@ -55,12 +55,12 @@ class BaseTest(TestCase):
             return num
 
         @test.when
-        def when_test(num):
+        def test(num):
             if num == 8:
                 return True
 
         @test.then
-        def than_test(num):
+        def test(num):
             return "Gotcha 8"
 
         @whenthen
@@ -68,12 +68,12 @@ class BaseTest(TestCase):
             return num
 
         @test_2.when
-        def when_test_(num):
+        def test_2(num):
             if num == 101:
                 return True
 
         @test_2.then
-        def than_test_(num):
+        def test_2(num):
             return "Gotcha 101"
 
         self.assertEqual("Gotcha 8", test(8))
@@ -90,7 +90,7 @@ class BaseTest(TestCase):
 
         with self.assertRaises(ValueError):
             @test.then
-            def than_test(num):
+            def test(num):
                 return "Gotcha"
 
     def test_wrong_order_2(self):
@@ -99,13 +99,13 @@ class BaseTest(TestCase):
             return num
 
         @test.when
-        def when_test(num):
+        def test(num):
             if num == 8:
                 return True
 
         with self.assertRaises(ValueError):
             @test.when
-            def when_test_lol(num):
+            def test(num):
                 if num == 8:
                     return True
 
@@ -115,15 +115,15 @@ class BaseTest(TestCase):
             return num
 
         @test.when
-        def when_test(num):
+        def test(num):
             if num == 8:
                 return True
 
         @test.then
-        def than_test(num):
+        def test(num):
             return "Gotcha"
 
         with self.assertRaises(ValueError):
             @test.then
-            def than_test(num):
+            def test(num):
                 return "Gotcha"
